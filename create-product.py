@@ -1,14 +1,12 @@
-import os
 from woocommerce import API
-#from dotenv import load_dotenv
+from config_loader import load_json_secret
 
-# Cargar variables del archivo .env
-#load_dotenv()
+woocommerce_config = load_json_secret("woocommerce.json")
 
 wcapi = API(
-    url="http://localhost:8080",
-    consumer_key="",
-    consumer_secret="",
+    url=woocommerce_config["url"],
+    consumer_key=woocommerce_config["consumer_key"],
+    consumer_secret=woocommerce_config["consumer_secret"],
     version="wc/v3"
 )
 
